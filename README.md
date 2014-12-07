@@ -1,1 +1,1 @@
-Vino cellar manager mobile client
+Vino wine cellar manager mobile client
