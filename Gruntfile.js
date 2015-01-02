@@ -6,8 +6,6 @@ var path = require('path');
 var cordovaCli = require('cordova');
 var spawn = require('child_process').spawn;
 
-var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
-
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
@@ -15,8 +13,6 @@ module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
-
-  grunt.loadNpmTasks('grunt-connect-proxy');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -90,16 +86,6 @@ module.exports = function (grunt) {
               hostname: 'localhost',
               livereload: 35729
           },
-          proxies: [
-              {
-                  context: '/api',
-                  host: 'localhost',
-                  port: 8080,
-                  https: false,
-                  changeOrigin: false,
-                  xforward: false
-              }
-          ],
           coverage: {
               options: {
                   port: 9002,
@@ -113,12 +99,7 @@ module.exports = function (grunt) {
                   base: [
                       '.tmp',
                       '<%= yeoman.app %>'
-                  ],
-                  middleware: function (connect) {
-                      return [
-                          proxySnippet
-                      ];
-                  }
+                  ]
               }
           },
           test: {
@@ -526,7 +507,6 @@ module.exports = function (grunt) {
     'wiredep',
     'concurrent:server',
     'autoprefixer',
-    'configureProxies',
     'newer:copy:app',
     'newer:copy:tmp'
   ]);

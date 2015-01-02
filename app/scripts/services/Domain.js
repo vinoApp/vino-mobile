@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vino')
-    .service('Domain', function ($resource) {
+    .service('Domain', function ($resource, serverUrl) {
 
-        return $resource('/api/domains/:key');
+        return $resource(serverUrl + '/api/domains/:key');
     });

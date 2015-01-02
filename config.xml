@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.vino.vino-mobile" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Vino Mobile</name>
+    <description>The mobile version of the Vino Wine Cellar Manager</description>
+    <author email="eoriou@gmail.com" href="http://about.me/eoriou">Elian ORIOU</author>
+    <content src="index.html"/>
+    <access origin="*"/>
+</widget>
