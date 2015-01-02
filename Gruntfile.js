@@ -6,6 +6,8 @@ var path = require('path');
 var cordovaCli = require('cordova');
 var spawn = require('child_process').spawn;
 
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
@@ -13,6 +15,8 @@ module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+
+  grunt.loadNpmTasks('grunt-connect-proxy');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -67,7 +71,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js'],
-        tasks: ['newer:copy:app', 'newer:jshint:all']
+        tasks: ['newer:copy:app']
       },
       styles: {
         files: ['<%= yeoman.app %>/<%= yeoman.styles %>/**/*.css'],
@@ -80,25 +84,59 @@ module.exports = function (grunt) {
     },
 
     // The actual grunt server settings
-    connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost'
+      connect: {
+          options: {
+              port: 9000,
+              hostname: 'localhost',
+              livereload: 35729
+          },
+          proxies: [
+              {
+                  context: '/api',
+                  host: 'localhost',
+                  port: 8080,
+                  https: false,
+                  changeOrigin: false,
+                  xforward: false
+              }
+          ],
+          coverage: {
+              options: {
+                  port: 9002,
+                  open: true,
+                  base: ['coverage']
+              }
+          },
+          livereload: {
+              options: {
+                  open: false,
+                  base: [
+                      '.tmp',
+                      '<%= yeoman.app %>'
+                  ],
+                  middleware: function (connect) {
+                      return [
+                          proxySnippet
+                      ];
+                  }
+              }
+          },
+          test: {
+              options: {
+                  port: 9001,
+                  base: [
+                      '.tmp',
+                      'test',
+                      '<%= yeoman.app %>'
+                  ]
+              }
+          },
+          dist: {
+              options: {
+                  base: 'www'
+              }
+          }
       },
-      dist: {
-        options: {
-          base: 'www'
-        }
-      },
-      coverage: {
-        options: {
-          port: 9002,
-          open: true,
-          base: ['coverage']
-        }
-      }
-    },
 
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
@@ -155,7 +193,7 @@ module.exports = function (grunt) {
       }
     },
 
-    
+
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
@@ -436,7 +474,7 @@ module.exports = function (grunt) {
   grunt.registerTask('watch:karma', function () {
     var karma = {
       files: ['<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js', 'test/spec/**/*.js'],
-      tasks: ['newer:jshint:test', 'karma:unit:run']
+      tasks: ['karma:unit:run']
     };
     grunt.config.set('watch', karma);
     return grunt.task.run(['watch']);
@@ -488,6 +526,7 @@ module.exports = function (grunt) {
     'wiredep',
     'concurrent:server',
     'autoprefixer',
+    'configureProxies',
     'newer:copy:app',
     'newer:copy:tmp'
   ]);
@@ -512,7 +551,6 @@ module.exports = function (grunt) {
   grunt.registerTask('coverage', ['karma:continuous', 'connect:coverage:keepalive']);
 
   grunt.registerTask('default', [
-    'newer:jshint',
     'karma:continuous',
     'compress'
   ]);

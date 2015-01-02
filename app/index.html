@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>"VinoMobile"</title>
+    <title>VinoMobile</title>
 
     <!-- build:css styles/vendor.css -->
     <!-- <link rel="stylesheet" href="vendor/some.contrib.css"> -->
@@ -17,7 +17,7 @@
     <!-- endbuild -->
   </head>
 
-  <body ng-app="VinoMobile" animation="slide-left-right-ios7">
+  <body ng-app="vino" animation="slide-left-right-ios7">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
@@ -31,7 +31,14 @@
       Templates are in the /templates folder (but you could also
       have templates inline in this html file if you'd like).
     -->
-    <ion-nav-view></ion-nav-view>
+
+    <div>
+
+        <ion-nav-view></ion-nav-view>
+
+        <div ng-include="'templates/tabs.html'"></div>
+
+    </div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- <script src="vendor/someContribJs.js"></script> -->
@@ -43,18 +50,24 @@
     <script src="lib/collide/collide.js"></script>
     <script src="lib/ionic/release/js/ionic.js"></script>
     <script src="lib/ionic/release/js/ionic-angular.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/app.js"></script>
 
-        <!-- build:js scripts/scripts.js -->
-        <script src="scripts/config.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers.js"></script>
-        <script src="scripts/services.js"></script>
-        <!-- endbuild -->
+    <!--Controllers-->
+    <script src="scripts/controllers/CellarsCtrl.js"></script>
+    <script src="scripts/controllers/DomainsCtrl.js"></script>
+    <script src="scripts/controllers/StatisticsCtrl.js"></script>
+
+    <!--Services-->
+    <script src="scripts/services/Domain.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
