@@ -2,13 +2,73 @@
 
     <ion-content class="has-header">
 
+        <!--search form-->
+        <div class="list list-inset">
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    AOC
+                </div>
+                <select ng-model="selection.aoc">
+                    <option value="{{ aoc._id }}" ng-repeat="aoc in aocs">{{ aoc.name }}</option>
+                </select>
+            </label>
+
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="query">
+            </label>
+
+        </div>
+
+        <!--list-->
         <ion-list>
 
-            <ion-item class="item-icon-right" ng-repeat="domain in domains" type="item-text-wrap">
+            <ion-item class="item-icon-right" ng-repeat="domain in domains | filter:query" type="item-text-wrap" ng-click="selectDomain(domain._id)">
                 {{ domain.name }} <i class="icon ion-chevron-right icon-accessory"></i>
             </ion-item>
 
         </ion-list>
+
+        <!--details-->
+
+        <div class="list card" ng-if="selection.domain">
+
+            <div class="item item-avatar">
+                <img src="mcfly.jpg">
+                <!--<h2>{{ selection.domain.name }}</h2>-->
+                <p>{{ selection.domain.origin.region.name }} - {{ selection.domain.origin.name }}</p>
+            </div>
+
+            <div class="item item-body">
+                <!--<img class="full-image" src="delorean.jpg">-->
+                <p>
+                    {{ selection.domain.wineDescription.floor }} / {{ selection.domain.wineDescription.grape }} / {{ selection.domain.wineDescription.medal }}
+                </p>
+                <p>
+                    {{ selection.domain.tasting.comment }} / {{ selection.domain.tasting.garde }} / {{ selection.domain.tasting.temperature }}
+                </p>
+                <p>
+                    {{ selection.domain.history.description }}
+                </p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsup"></i>
+                    Like
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-chatbox"></i>
+                    Comment
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-share"></i>
+                    Share
+                </a>
+            </div>
+
+        </div>
 
     </ion-content>
 
