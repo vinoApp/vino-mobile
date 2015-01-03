@@ -1,11 +1,11 @@
 var urls = {
-    'dev': 'http://localhost:8080',
-    'prod': 'http://localhost:8080'
+    'home': 'http://192.168.0.15:8080',
+    'dev': 'http://localhost:8080'
 };
 
 var server = function (env) {
     if (!env) {
-        env = 'dev';
+        env = 'home';
     }
     return urls[env];
 };
