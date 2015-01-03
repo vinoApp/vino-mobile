@@ -1,17 +1,12 @@
 'use strict';
 angular.module('vino')
-    .controller('DomainsCtrl', function ($scope, Domain, Origin) {
+    .controller('DomainsCtrl', function ($scope, $state, Origin, Domain) {
 
         angular.extend($scope, {
             aocs: Origin.getAllAocs(),
             selection: {},
             selectDomain: function (key) {
-                $scope.selection.domain = Domain.get({
-                    key: key
-                });
-            },
-            clearDomainSelection: function () {
-                $scope.selection.domain = null;
+                $state.go('domains.detail', { id: key });
             }
         });
 

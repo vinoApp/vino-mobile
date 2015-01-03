@@ -34,9 +34,15 @@
 
     <div>
 
-        <ion-nav-view></ion-nav-view>
+        <ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+            <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+        </ion-nav-bar>
 
-        <div ng-include="'templates/tabs.html'"></div>
+        <ion-nav-view animation="slide-left-right"></ion-nav-view>
+
+        <ion-nav-view>
+            <div ng-include="'templates/tabs.html'"></div>
+        </ion-nav-view>
 
     </div>
 
@@ -64,6 +70,7 @@
 
     <!--Controllers-->
     <script src="scripts/controllers/CellarsCtrl.js"></script>
+    <script src="scripts/controllers/DomainCtrl.js"></script>
     <script src="scripts/controllers/DomainsCtrl.js"></script>
     <script src="scripts/controllers/StatisticsCtrl.js"></script>
 

@@ -30,46 +30,6 @@
 
         </ion-list>
 
-        <!--details-->
-
-        <div class="list card" ng-if="selection.domain">
-
-            <div class="item item-avatar">
-                <!--<img src="mcfly.jpg">-->
-                <h2>{{ selection.domain.name }}</h2>
-                <p>{{ selection.domain.origin.region.name }} - {{ selection.domain.origin.name }}</p>
-            </div>
-
-            <div class="item item-body">
-                <!--<img class="full-image" src="delorean.jpg">-->
-                <p>
-                    {{ selection.domain.wineDescription.floor }} / {{ selection.domain.wineDescription.grape }} / {{ selection.domain.wineDescription.medal }}
-                </p>
-                <p>
-                    {{ selection.domain.tasting.comment }} / {{ selection.domain.tasting.garde }} / {{ selection.domain.tasting.temperature }}
-                </p>
-                <p>
-                    {{ selection.domain.history.description }}
-                </p>
-            </div>
-
-            <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" href="#">
-                    <i class="icon ion-thumbsup"></i>
-                    Like
-                </a>
-                <a class="tab-item" href="#">
-                    <i class="icon ion-chatbox"></i>
-                    Comment
-                </a>
-                <a class="tab-item" href="#">
-                    <i class="icon ion-share"></i>
-                    Share
-                </a>
-            </div>
-
-        </div>
-
     </ion-content>
 
 </ion-view>

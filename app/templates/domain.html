@@ -1,0 +1,45 @@
+<ion-view title="Domain">
+
+    <ion-content class="has-header">
+
+        <div class="card">
+
+            <div class="item item-avatar">
+                <!--<img src="mcfly.jpg">-->
+                <h2>{{ domain.name }}</h2>
+                <p>{{ domain.origin.region.name }} - {{ domain.origin.name }}</p>
+            </div>
+
+            <div class="item item-body">
+                <img alt='300x200' style='width:300px;' ng-if="domain.sticker" class="right" ng-src='data:image/jpeg;base64,{{ domain.sticker }}'>
+                <p>
+                    {{ domain.wineDescription.floor }} / {{ domain.wineDescription.grape }} / {{ domain.wineDescription.medal }}
+                </p>
+                <p>
+                    {{ domain.tasting.comment }} / {{ domain.tasting.garde }} / {{ domain.tasting.temperature }}
+                </p>
+                <p>
+                    {{ domain.history.description }}
+                </p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsup"></i>
+                    Like
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-chatbox"></i>
+                    Comment
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-share"></i>
+                    Share
+                </a>
+            </div>
+
+        </div>
+
+    </ion-content>
+
+</ion-view>

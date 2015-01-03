@@ -31,18 +31,32 @@ angular.module('vino', [ 'ngResource', 'ionic', 'config' ])
             .state('cellars', {
                 url: '/cellars',
                 views: {
-                    'cellars': {
+                    'cellars-list': {
                         templateUrl: 'templates/cellars.html',
                         controller: 'CellarsCtrl'
                     }
                 }
             })
             .state('domains', {
+                abstract: true,
                 url: '/domains',
+                template: '<ion-nav-view name="content"></ion-nav-view>'
+            })
+            .state('domains.list', {
+                url: '/list',
                 views: {
-                    'domains': {
+                    'content': {
                         templateUrl: 'templates/domains.html',
                         controller: 'DomainsCtrl'
+                    }
+                }
+            })
+            .state('domains.detail', {
+                url: '/:id/detail',
+                views: {
+                    'content': {
+                        templateUrl: 'templates/domain.html',
+                        controller: 'DomainCtrl'
                     }
                 }
             })
