@@ -1,8 +1,25 @@
-<ion-view title="Cellars">
+<ion-view title="Caves">
 
     <ion-content class="has-header">
 
-        Cellars...
+        <!--search form-->
+        <div class="list list-inset">
+
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="query">
+            </label>
+
+        </div>
+
+        <!--list-->
+        <ion-list>
+
+            <ion-item class="item-icon-right" ng-repeat="cellar in cellars | filter:query" type="item-text-wrap" ng-click="selectCellar(cellar._id)">
+                {{ cellar.name }} <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+        </ion-list>
 
     </ion-content>
 
