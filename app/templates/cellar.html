@@ -1,0 +1,59 @@
+<ion-view title="Cave - {{ cellar.name }}">
+
+    <ion-content class="has-header">
+
+        <div class="card">
+
+            <div class="item item-body">
+
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="text" placeholder="Search" ng-model="query">
+                    </label>
+
+                </div>
+
+                <ion-list>
+
+                    <a class="item item-avatar" ng-repeat="record in content | filter:query">
+
+                        <img alt='300x200' style='height:100px;width:auto;' ng-if="record.domain.sticker" class="right"
+                             ng-src='data:image/jpeg;base64,{{ record.domain.sticker }}'
+                             ng-click="showDomainDetail(record.domain._id)">
+
+                        <b>{{ record.domain.name }}</b>
+                        <br/>
+                        {{ record.vintage }}
+                        <br/>
+                        <button class="button button-small button-balanced icon ion-plus" ng-click="plus(record)"></button>
+                        <span>{{ record.quantity }}</span>
+                        <button class="button button-small button-assertive icon ion-minus" ng-click="minus(record)"></button>
+
+                    </a>
+
+                </ion-list>
+
+            </div>
+
+            <!--<div class="item tabs tabs-secondary tabs-icon-left">-->
+                <!--<a class="tab-item" href="#">-->
+                    <!--<i class="icon ion-thumbsup"></i>-->
+                    <!--Like-->
+                <!--</a>-->
+                <!--<a class="tab-item" href="#">-->
+                    <!--<i class="icon ion-chatbox"></i>-->
+                    <!--Comment-->
+                <!--</a>-->
+                <!--<a class="tab-item" href="#">-->
+                    <!--<i class="icon ion-share"></i>-->
+                    <!--Share-->
+                <!--</a>-->
+            <!--</div>-->
+
+        </div>
+
+    </ion-content>
+
+</ion-view>

@@ -11,7 +11,9 @@
             </div>
 
             <div class="item item-body">
-                <img alt='300x200' style='width:300px;' ng-if="domain.sticker" class="right" ng-src='data:image/jpeg;base64,{{ domain.sticker }}'>
+                <div>
+                    <img alt='300x200' style='height:300px;' ng-if="domain.sticker" ng-src='data:image/jpeg;base64,{{ domain.sticker }}'>
+                </div>
 
                 <div class="item item-divider">
                     Histoire/Description

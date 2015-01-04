@@ -33,13 +33,23 @@ angular.module('vino', [ 'ngResource', 'ionic', 'config' ])
                 }
             })
             .state('tabs.cellars', {
+                abstract: true,
                 url: '/cellars',
                 views: {
-                    'cellars-list': {
-                        templateUrl: 'templates/cellars.html',
-                        controller: 'CellarsCtrl'
+                    content: {
+                        template: '<ion-nav-view></ion-nav-view>'
                     }
                 }
+            })
+            .state('tabs.cellars.list', {
+                url: '/list',
+                templateUrl: 'templates/cellars.html',
+                controller: 'CellarsCtrl'
+            })
+            .state('tabs.cellars.detail', {
+                url: '/:id/detail',
+                templateUrl: 'templates/cellar.html',
+                controller: 'CellarCtrl'
             })
             .state('tabs.domains', {
                 abstract: true,
