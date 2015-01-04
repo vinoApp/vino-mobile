@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('vino')
-    .service('Origin', function ($resource, serverUrl) {
+    .service('Origin', function ($resource, Backend) {
 
-        var resource = $resource(serverUrl + '/api/origins/:kind');
+        var resource = $resource(Backend.getActiveEnvBackendUrl() + '/api/origins/:kind');
 
         return {
             getAllAocs: function () {

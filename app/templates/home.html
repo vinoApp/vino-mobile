@@ -2,8 +2,30 @@
 
     <ion-content class="has-header">
 
-        Home ...
+        <div class="row">
+            <div class="col col-67 col-offset-33">
+                <img src="images/vino.png" width="100px" ng-click="showEnvCombo()"/>
+            </div>
+        </div>
+
+        <div class="row" ng-show="envComboShown === true">
+            <div class="col col-100">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Env
+                    </div>
+                    <select ng-model="env.selected" ng-options="env for env in env.all"></select>
+                </label>
+            </div>
+        </div>
 
     </ion-content>
+
+    <ion-footer-bar align-title="left" class="bar-assertive">
+        <div>
+            {{ appName }} - {{ appVersion }}
+        </div>
+    </ion-footer-bar>
+
 
 </ion-view>

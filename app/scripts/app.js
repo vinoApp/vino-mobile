@@ -24,7 +24,8 @@ angular.module('vino', [ 'ngResource', 'ionic', 'config' ])
                 url: '/',
                 views: {
                     'home': {
-                        templateUrl: 'templates/home.html'
+                        templateUrl: 'templates/home.html',
+                        controller: 'HomeCtrl'
                     }
                 }
             })

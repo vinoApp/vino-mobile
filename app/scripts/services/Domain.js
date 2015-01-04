@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vino')
-    .service('Domain', function ($resource, serverUrl) {
+    .service('Domain', function ($resource, Backend) {
 
-        return $resource(serverUrl + '/api/domains/:key');
+        return $resource(Backend.getActiveEnvBackendUrl() + '/api/domains/:key');
     });
