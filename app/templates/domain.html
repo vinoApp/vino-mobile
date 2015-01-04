@@ -17,24 +17,24 @@
                     Histoire/Description
                 </div>
                 <div class="item item-body">
-                    {{ domain.history.description }}
+                    {{ domain.history.description | default }}
                 </div>
 
                 <div class="item item-divider">
                     Sol
                 </div>
                 <div class="item item-body">
-                    <p>{{ domain.wineDescription.floor }}</p>
-                    <p>{{ domain.wineDescription.grape }}</p>
-                    <p>{{ domain.wineDescription.medal }}</p>
+                    <p>{{ domain.wineDescription.floor | default }}</p>
+                    <p>{{ domain.wineDescription.grape | default }}</p>
+                    <p>{{ domain.wineDescription.medal | default }}</p>
                 </div>
                 <div class="item item-divider">
                     Garde
                 </div>
                 <div class="item item-body">
-                    <p>{{ domain.tasting.comment }}</p>
-                    <p>{{ domain.tasting.garde }}</p>
-                    <p>{{ domain.tasting.temperature }}</p>
+                    <p>{{ domain.tasting.comment | default }}</p>
+                    <p>{{ domain.tasting.garde | default }}</p>
+                    <p>{{ domain.tasting.temperature | default }}</p>
                 </div>
 
             </div>
