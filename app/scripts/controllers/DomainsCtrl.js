@@ -6,7 +6,7 @@ angular.module('vino')
             aocs: Origin.getAllAocs(),
             selection: {},
             selectDomain: function (key) {
-                $state.go('domains.detail', { id: key });
+                $state.go('tabs.domains.detail', { id: key });
             }
         });
 

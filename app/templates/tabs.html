@@ -1,22 +1,22 @@
 <ion-tabs class="tabs-icon-top">
 
     <!-- Cellars Management tab -->
-    <ion-tab title="Home" icon="icon ion-home" href="#/">
+    <ion-tab title="Home" icon="icon ion-home" ui-sref="tabs.home">
         <ion-nav-view name="home"></ion-nav-view>
     </ion-tab>
 
     <!-- Cellars Management tab -->
-    <ion-tab title="Cellars" icon="icon ion-wineglass" href="#/cellars">
+    <ion-tab title="Cellars" icon="icon ion-wineglass" ui-sref="tabs.cellars">
         <ion-nav-view name="cellars-list"></ion-nav-view>
     </ion-tab>
 
     <!-- Domains Tab -->
-    <ion-tab title="Domains" icon="icon ion-location" href="#/domains/list">
-        <ion-nav-view name="domains-list"></ion-nav-view>
+    <ion-tab title="Domains" icon="icon ion-location" ui-sref="tabs.domains.list">
+        <ion-nav-view name="content"></ion-nav-view>
     </ion-tab>
 
     <!-- Stats -->
-    <ion-tab title="Stats" icon="icon ion-pie-graph" href="#/statistics">
+    <ion-tab title="Stats" icon="icon ion-pie-graph" ui-sref="tabs.statistics">
         <ion-nav-view name="statistics"></ion-nav-view>
     </ion-tab>
 

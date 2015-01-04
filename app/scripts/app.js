@@ -19,8 +19,11 @@ angular.module('vino', [ 'ngResource', 'ionic', 'config' ])
     .config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-
-            .state('home', {
+            .state('tabs', {
+                abstract: true,
+                templateUrl: 'templates/tabs.html'
+            })
+            .state('tabs.home', {
                 url: '/',
                 views: {
                     'home': {
@@ -29,7 +32,7 @@ angular.module('vino', [ 'ngResource', 'ionic', 'config' ])
                     }
                 }
             })
-            .state('cellars', {
+            .state('tabs.cellars', {
                 url: '/cellars',
                 views: {
                     'cellars-list': {
@@ -38,30 +41,26 @@ angular.module('vino', [ 'ngResource', 'ionic', 'config' ])
                     }
                 }
             })
-            .state('domains', {
+            .state('tabs.domains', {
                 abstract: true,
                 url: '/domains',
-                template: '<ion-nav-view name="content"></ion-nav-view>'
+                views: {
+                    content: {
+                        template: '<ion-nav-view></ion-nav-view>'
+                    }
+                }
             })
-            .state('domains.list', {
+            .state('tabs.domains.list', {
                 url: '/list',
-                views: {
-                    'content': {
-                        templateUrl: 'templates/domains.html',
-                        controller: 'DomainsCtrl'
-                    }
-                }
+                templateUrl: 'templates/domains.html',
+                controller: 'DomainsCtrl'
             })
-            .state('domains.detail', {
+            .state('tabs.domains.detail', {
                 url: '/:id/detail',
-                views: {
-                    'content': {
-                        templateUrl: 'templates/domain.html',
-                        controller: 'DomainCtrl'
-                    }
-                }
+                templateUrl: 'templates/domain.html',
+                controller: 'DomainCtrl'
             })
-            .state('statistics', {
+            .state('tabs.statistics', {
                 url: '/statistics',
                 views: {
                     'statistics': {
